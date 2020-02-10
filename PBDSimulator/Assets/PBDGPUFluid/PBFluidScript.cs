@@ -122,7 +122,10 @@ namespace PBFluid
                 }
                 else
                 {
-                    blastPoint = new Vector3(0, 10000, 0);
+                    float x = Mathf.Sin(Time.time * 0.5f) * 8f;
+                    float z = Mathf.Sin(Time.time * 0.85f) * 4.5f;
+                    Debug.Log(x + ", " + z);
+                    blastPoint = new Vector3(x, 0f, z);
                 }
 
                 fusion_FluidSolver.StepPhysics(timeStep, blastPoint);
@@ -130,7 +133,7 @@ namespace PBFluid
             }
             //draw particles using GPU instancing
             //the draw function is defined in fluidbody class
-            fusion_FluidBody.Draw(Camera.main, renderSphereMesh, fluidParticleMat, 0);
+            fusion_FluidBody.Draw(renderSphereMesh, fluidParticleMat);
         }
         //dispose the objects
         private void OnDestroy()
@@ -139,13 +142,7 @@ namespace PBFluid
             fusion_FluidBody.Dispose();
             fusion_FluidSolver.Dispose();
         }
-        //need to get the current camera in order to render 
-        //the fluid objects
-        private void OnRenderObject()
-        {
-            Camera camera = Camera.current;
-            if (camera != Camera.main) return;
-        }
+
         //given a cube region, generate boundary particles around it
         private void CreateBoundary(float radius, float density, Vector3 containerPos, Vector3 resizeFactor)
         {

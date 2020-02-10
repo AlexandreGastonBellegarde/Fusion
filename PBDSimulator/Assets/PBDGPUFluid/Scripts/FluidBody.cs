@@ -56,7 +56,7 @@ namespace PBFluid
         /// <summary>
         /// Draws the mesh spheres when draw particles is enabled.
         /// </summary>
-        public void Draw(Camera cam, Mesh mesh, Material material, int layer)
+        public void Draw(Mesh mesh, Material material)
         {
             if (m_argsBuffer == null)
                 CreateArgBuffer(mesh.GetIndexCount(0));
@@ -69,7 +69,7 @@ namespace PBFluid
             ShadowCastingMode castShadow = ShadowCastingMode.On;
             bool recieveShadow = true;
 
-            Graphics.DrawMeshInstancedIndirect(mesh, 0, material, Bounds, m_argsBuffer, 0, null, castShadow, recieveShadow, layer, cam);
+            Graphics.DrawMeshInstancedIndirect(mesh, 0, material, Bounds, m_argsBuffer, 0, null, castShadow, recieveShadow);
 
         }
 

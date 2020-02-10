@@ -29,7 +29,7 @@ Shader "PBDFluid/Particle"
 			};
 
 	#ifdef UNITY_PROCEDURAL_INSTANCING_ENABLED
-			StructuredBuffer<float3> positions;
+			StructuredBuffer<float4> positions;
 	#endif
 
 			void setup()

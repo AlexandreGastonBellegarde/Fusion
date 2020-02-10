@@ -92,7 +92,7 @@ float3 Velocity(int i)
 		float dis2Blast = length(diff);
 		if (dis2Blast <= 20.0 && dis2Blast >= 0.2) 
 		{
-			velocity += diff / dis2Blast / dis2Blast * 10;
+			velocity += diff / dis2Blast / dis2Blast * 0.1f;
 		}
 	}
 	//Using the bounding box for restricting particles inside the region (not working as expected)
